@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 03:23:45 by scristia      #+#    #+#                 */
-/*   Updated: 2022/06/13 02:42:07 by scristia      ########   odam.nl         */
+/*   Updated: 2022/06/13 03:36:22 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ static void	check_spaces(char **str)
 {
 	while (**str == ' ' && **str)
 		(*str)++;
-	if (**str == '\0')
-		return ;
-	if (!is_digit(**str) && **str != '-')
-		p_err(PS_INVALID_CHAR);
 }
 
 static void	check_is_number(char **str, size_t *valid_tokens)
@@ -32,8 +28,10 @@ static void	check_is_number(char **str, size_t *valid_tokens)
 	size_t	is_num;
 
 	is_num = 0;
-	if (**str == '-' && is_digit(*(*(str) + 1)))
+	if (**str == '-')
 		(*str)++;
+	if (!is_digit(**str))
+		p_err(PS_INVALID_CHAR);
 	while (is_digit(**str) && **str)
 	{
 		(*str)++;
