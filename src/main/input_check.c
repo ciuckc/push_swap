@@ -6,16 +6,11 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 03:23:45 by scristia      #+#    #+#                 */
-/*   Updated: 2022/06/13 03:36:22 by scristia      ########   odam.nl         */
+/*   Updated: 2022/06/18 23:32:03 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static size_t	is_digit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
 
 static void	check_spaces(char **str)
 {
@@ -28,11 +23,11 @@ static void	check_is_number(char **str, size_t *valid_tokens)
 	size_t	is_num;
 
 	is_num = 0;
-	if (**str == '-')
+	if (ft_issign(**str))
 		(*str)++;
-	if (!is_digit(**str))
+	if (!ft_isdigit(**str))
 		p_err(PS_INVALID_CHAR);
-	while (is_digit(**str) && **str)
+	while (ft_isdigit(**str) && **str)
 	{
 		(*str)++;
 		if (!is_num)
@@ -42,15 +37,17 @@ static void	check_is_number(char **str, size_t *valid_tokens)
 		(*valid_tokens)++;
 }
 
-static void	check_string(char *str, size_t *valid_tokens)
+static void	check_string(const char *str, size_t *valid_tokens)
 {
 	size_t	initial_tokens;
+	char	*str_cpy;
 
 	initial_tokens = *valid_tokens;
-	while (*str)
+	str_cpy = (char *)str;
+	while (*str_cpy)
 	{
-		check_spaces(&str);
-		check_is_number(&str, valid_tokens);
+		check_spaces(&str_cpy);
+		check_is_number(&str_cpy, valid_tokens);
 	}
 	if (*valid_tokens == initial_tokens)
 		p_err(EMPTY_STR);
@@ -59,17 +56,15 @@ static void	check_string(char *str, size_t *valid_tokens)
 size_t	check_and_count_tokens(int argc, char **argv)
 {
 	size_t	valid_tokens;
-	size_t	i;
-	char	**argv_cp;
+	int		i;
 
 	i = 1;
-	argv_cp = argv;
 	valid_tokens = 0;
 	if (argc == 1)
 		p_err(ARGC_ERR);
-	while (*(argv_cp + i))
+	while (i < argc)
 	{
-		check_string(*(argv_cp + i), &valid_tokens);
+		check_string(argv[i], &valid_tokens);
 		i++;
 	}
 	return (valid_tokens);

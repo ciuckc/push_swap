@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.c                                        :+:    :+:            */
+/*   ft_memset.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/06/05 20:18:54 by scristia      #+#    #+#                 */
-/*   Updated: 2022/06/12 21:32:24 by scristia      ########   odam.nl         */
+/*   Created: 2022/06/27 18:07:34 by scristia      #+#    #+#                 */
+/*   Updated: 2022/06/27 18:17:33 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	*ft_memset(void *buff, int c, size_t len)
 {
-	t_input_data	data_input;
+	size_t	i;
 
-	data_input.tokens = check_and_count_tokens(argc, argv);
-	printf("My tokens are %zu\n", data_input.tokens);
+	if ((unsigned char *)buff == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		*(((unsigned char *)buff) + i) = (unsigned char)c;
+		i++;
+	}
+	return ((void *)buff);
 }
