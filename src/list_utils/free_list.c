@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/18 15:55:43 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/18 19:27:01 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/18 20:21:34 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	free_list(t_node **list)
 		*list = (*list)->next;
 		free(previous);
 	}
-	free(last);
+	free(*list);
+	*list = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/15 21:24:02 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/18 17:27:38 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/18 20:36:26 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	lst_remove_node(t_node **list)
 
 	tmp = NULL;
 	if ((*list)->next == *list)
+	{
 		free(*list);
+		*list = NULL;
+	}
 	else
 	{
 		tmp = (*list)->next;

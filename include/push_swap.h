@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 01:39:46 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/18 17:29:13 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/18 21:21:32 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_node
 # define RR 16
 # define RRA 17
 # define RRB 19
+# define PA 24
+# define PB 25
 # define RRR 36
 
 /* ************************************************************************** */
@@ -63,15 +65,17 @@ long	*extract_numbers(char **argv, size_t tokens);
 /* 							ALGO FUNCTIONS									  */
 /* ************************************************************************** */
 
-void	push_from(t_node **src, t_node **dest);
-
 void	sort_stack(t_node **stack_a, size_t tokens);
 
-void	swap_top(t_node **head);
+void	push_from(t_node **src, t_node **dest, size_t op_code);
 
-void	rotate(t_node **head);
+void	swap_top(t_node **head, size_t op_code);
 
-void	reverse_rotate(t_node **head);
+void	rotate(t_node **head, size_t op_code);
+
+void	reverse_rotate(t_node **head, size_t op_code);
+
+void	print_instructions(size_t op_code);
 
 /* ************************************************************************** */
 /* 							LIST FUNCTIONS									  */
@@ -106,5 +110,11 @@ int		ft_isdigit(char c);
 int		ft_issign(char c);
 
 long	ft_atoi(char **str);
+
+/* ************************************************************************** */
+/* 								PRINTF										  */
+/* ************************************************************************** */
+
+int		ft_printf(const char *format_string, ...);
 
 #endif
