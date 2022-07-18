@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 01:39:46 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/15 21:30:24 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/18 17:29:13 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_node
 # define RR 16
 # define RRA 17
 # define RRB 19
-# define RRR 20
+# define RRR 36
 
 /* ************************************************************************** */
 /* 							MAIN FUNCTIONS									  */
@@ -81,7 +81,9 @@ void	lst_add_back(t_node **list, t_node *new);
 
 void	lst_add_front(t_node **list, t_node *new);
 
-void	lst_uncouple_node(t_node **lst);
+void	lst_remove_node(t_node **list);
+
+void	free_list(t_node **list);
 
 size_t	lst_size(t_node *list);
 

@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/20 07:55:25 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/15 21:37:17 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/18 18:43:40 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sort_stack(t_node **stack_a, size_t tokens)
 
 	(void)tokens;
 	stack_b = NULL;
-	push_from(stack_a, &stack_b);
+	(void)stack_a;
 }
 //	printf("Stack A:\nNode with nr %ld\tAddress is %p\t", (*stack_a)->number, (*stack_a));
 //	printf("Next node is %p with value of %ld\t", (*stack_a)->next, ((*stack_a)->next)->number);

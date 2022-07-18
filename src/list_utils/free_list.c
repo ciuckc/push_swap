@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.c                                        :+:    :+:            */
+/*   free_list.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/06/05 20:18:54 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/18 19:45:30 by scristia      ########   odam.nl         */
+/*   Created: 2022/07/18 15:55:43 by scristia      #+#    #+#                 */
+/*   Updated: 2022/07/18 19:27:01 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	free_list(t_node **list)
 {
-	size_t	tokens;
-	t_node	*stack_a;
+	t_node	*last;
+	t_node	*previous;
 
-	tokens = check_and_count_tokens(argc, argv);
-	stack_a = create_list(extract_numbers(argv, tokens), tokens);
-	while (tokens)
+	if ((*list)->next == *list)
 	{
-		printf("Value and address and sizeof node is: %ld\t%p\n", stack_a->number, stack_a);
-		stack_a = stack_a->next;
-		tokens--;
+		free(*list);
+		return ;
 	}
-	free_list(&stack_a);
+	last = (*list)->previous;
+	previous = NULL;
+	while (*list != last)
+	{
+		previous = *list;
+		*list = (*list)->next;
+		free(previous);
+	}
+	free(last);
 }

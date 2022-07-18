@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/27 18:03:14 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/15 21:29:59 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/18 17:30:55 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,25 @@
 
 void	push_from(t_node **src, t_node **dest)
 {
-	lst_add_front(dest, *src);
-	lst_uncouple_node(src);
+	t_node	*new;
+
+	new = create_node((*src)->number);
+	if (new == NULL)
+	{
+		free_list(src);
+		if (*dest)
+			free_list(dest);
+		p_err(MALLOC_FAIL);
+	}
+	lst_add_front(dest, new);
 }
 
 void	swap_top(t_node	**head)
 {
 	long	tmp;
 
-	tmp = (*head)->next->number;
-	(*head)->next->number = (*head)->number;
+	tmp = ((*head)->next)->number;
+	((*head)->next)->number = (*head)->number;
 	(*head)->number = tmp;
 }
 

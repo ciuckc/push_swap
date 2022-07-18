@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/19 05:42:53 by scristia      #+#    #+#                 */
-/*   Updated: 2022/06/23 18:27:43 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/18 19:16:43 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ static void	free_list_if_null(t_node **head, t_node *tmp, long *num_list)
 	if (tmp == NULL)
 	{
 		free(num_list);
-		while (*head)
-		{
-			*head = (*head)->next;
-			free(previous);
-			previous = *head;
-		}
+		free_list(head);
 		p_err(MALLOC_FAIL);
 	}
 }
@@ -47,11 +42,8 @@ static void	map_to_create_node(t_node **head, long *num_list, size_t list_len)
 			lst_add_back(head, tmp);
 		i++;
 	}
-	if (i == list_len)
-	{
-		(*head)->previous = tmp;
-		tmp->next = *head;
-	}
+	(*head)->previous = tmp;
+	tmp->next = *head;
 }
 
 t_node	*create_list(long *num_list, size_t tokens)
@@ -60,5 +52,6 @@ t_node	*create_list(long *num_list, size_t tokens)
 
 	head = NULL;
 	map_to_create_node(&head, num_list, tokens);
+	free(num_list);
 	return (head);
 }
