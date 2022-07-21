@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 03:23:45 by scristia      #+#    #+#                 */
-/*   Updated: 2022/06/18 23:32:03 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/21 17:13:08 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ size_t	check_and_count_tokens(int argc, char **argv)
 
 	i = 1;
 	valid_tokens = 0;
-	if (argc == 1)
-		p_err(ARGC_ERR);
 	while (i < argc)
 	{
 		check_string(argv[i], &valid_tokens);

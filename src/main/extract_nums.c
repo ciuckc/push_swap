@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/19 05:55:15 by scristia      #+#    #+#                 */
-/*   Updated: 2022/06/27 19:50:35 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/21 17:04:44 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,16 @@ long	*extract_numbers(char **argv, size_t tokens)
 	number_list = calloc(tokens, sizeof(long));
 	if (number_list == NULL)
 		p_err(MALLOC_FAIL);
-	argv++;
 	while (*argv)
 	{
 		while (**argv)
 		{
 			number_list[i] = ft_atoi(argv);
+			if (number_list[i] > INT_MAX || number_list[i] < INT_MIN)
+			{
+				free(number_list);
+				p_err(INT_LIMIT);
+			}
 			i++;
 		}
 		argv++;

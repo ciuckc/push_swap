@@ -6,11 +6,26 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/20 07:55:25 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/18 21:41:15 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/21 22:04:25 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+size_t	is_sorted(t_node *stack_a)
+{
+	t_node	*last;
+
+	last = stack_a->previous;
+	while (stack_a != last)
+	{
+		if (stack_a->number < stack_a->next->number)
+			stack_a = stack_a->next;
+		else
+			return (0);
+	}
+	return (1);
+}
 
 void	sort_stack(t_node **stack_a, size_t tokens)
 {
@@ -18,14 +33,13 @@ void	sort_stack(t_node **stack_a, size_t tokens)
 
 	(void)tokens;
 	stack_b = NULL;
-	push_from(stack_a, &stack_b, PB);
-	push_from(stack_a, &stack_b, PB);
-	push_from(stack_a, &stack_b, PB);
-	push_from(&stack_b, stack_a, PA);
-	ft_printf("Stack A:\nNode with nr %d\tAddress is %p\t", (*stack_a)->number, (*stack_a));
-	ft_printf("Next node is %p with value of %d\t", (*stack_a)->next, ((*stack_a)->next)->number);
-	ft_printf("Previous node is %p with value of %d\n", (*stack_a)->previous, ((*stack_a)->previous)->number);
-	ft_printf("Stack B:\nNode with nr %d\tAddress is %p\t", (stack_b)->number, (stack_b));
-	ft_printf("Next node is %p with value of %d\t", (stack_b)->next, ((stack_b)->next)->number);
-	ft_printf("Previous node is %p with value of %d\n", (stack_b)->previous, ((stack_b)->previous)->number);
+	while (!is_sorted(*stack_a))
+	{
+		if (tokens == 2)
+			sort_two(stack_a);
+		else if (tokens == 3)
+			sort_three(stack_a);
+		else if (tokens == 4)
+			sort_four(stack_a, &stack_b, tokens);
+	}
 }
