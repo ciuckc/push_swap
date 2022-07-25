@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 01:39:46 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/21 22:04:48 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/25 19:56:16 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,17 @@ void	sort_two(t_node **stack_a);
 
 void	sort_three(t_node **stack_a);
 
-void	sort_four(t_node **a, t_node **b, size_t tokens);
+void	sort_four(t_node **head, int op_code);
 
-void	push_from(t_node **src, t_node **dest, size_t op_code);
+void	push_from(t_node **src, t_node **dest, int op_code);
 
-void	swap_top(t_node	**head_a, t_node **head_b, size_t op_code);
+void	swap_top(t_node	**head, int op_code);
 
-void	rotate(t_node **head_a, t_node **head_b, size_t op_code);
+void	rotate(t_node **head, int op_code);
 
-void	reverse_rotate(t_node	**head_a, t_node **head_b, size_t op_code);
+void	reverse_rotate(t_node	**head, int op_code);
+
+void	print_instructions(int op_code);
 
 size_t	is_sorted(t_node *stack_a);
 
