@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 01:39:46 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/25 19:56:16 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/25 21:09:22 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,18 @@ typedef struct s_node
 /* 							INSTRUCTION DEFINES								  */
 /* ************************************************************************** */
 
+# define END 0
 # define SA 1
-# define SB 2
-# define SS 3
-# define RA 4
-# define RB 5
-# define RR 6
-# define RRA 7
-# define RRB 8
-# define RRR 9
-# define PA 10
-# define PB 11
+# define SB 3
+# define SS 4
+# define RA 7
+# define RB 9
+# define RR 16
+# define RRA 17
+# define RRB 19
+# define PA 24
+# define PB 25
+# define RRR 36
 
 /* ************************************************************************** */
 /* 								LIMITS										  */
@@ -77,8 +78,6 @@ void	sort_stack(t_node **stack_a, size_t tokens);
 void	sort_two(t_node **stack_a);
 
 void	sort_three(t_node **stack_a);
-
-void	sort_four(t_node **head, int op_code);
 
 void	push_from(t_node **src, t_node **dest, int op_code);
 

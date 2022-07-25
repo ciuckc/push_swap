@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/20 07:55:25 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/21 22:04:25 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/25 21:10:31 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,8 @@ void	sort_stack(t_node **stack_a, size_t tokens)
 	stack_b = NULL;
 	while (!is_sorted(*stack_a))
 	{
-		if (tokens == 2)
-			sort_two(stack_a);
-		else if (tokens == 3)
+		if (tokens <= 3)
 			sort_three(stack_a);
-		else if (tokens == 4)
-			sort_four(stack_a, &stack_b, tokens);
 	}
+	print_instructions(END);
 }

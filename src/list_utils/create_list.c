@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/19 05:42:53 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/18 19:16:43 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/25 20:27:55 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ static void	map_to_create_node(t_node **head, long *num_list, size_t list_len)
 			lst_add_back(head, tmp);
 		i++;
 	}
-	(*head)->previous = tmp;
-	tmp->next = *head;
 }
 
 t_node	*create_list(long *num_list, size_t tokens)
