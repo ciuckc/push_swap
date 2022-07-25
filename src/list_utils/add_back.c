@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/20 02:51:06 by scristia      #+#    #+#                 */
-/*   Updated: 2022/06/20 05:07:43 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/25 19:26:15 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 void	lst_add_back(t_node **list, t_node *new)
 {
-	t_node	*last;
-
-	last = NULL;
 	if (list)
 	{
 		if (*list)
 		{
-			last = lst_last(*list);
-			new->previous = last;
-			last->next = new;
+			((*list)->previous)->next = new;
+			new->previous = (*list)->previous;
+			new->next = *list;
+			(*list)->previous = new;
 		}
 		else
+		{
 			*list = new;
+			(*list)->next = *list;
+			(*list)->previous = *list;
+		}
 	}
 }
