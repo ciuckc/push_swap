@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/20 03:40:23 by scristia      #+#    #+#                 */
-/*   Updated: 2022/06/20 03:41:56 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/25 19:33:01 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 size_t	lst_size(t_node *list)
 {
 	size_t	len;
+	t_node	*last;
 
-	len = 0;
-	while (list)
+	last = list->previous;
+	len = 1;
+	while (list != last)
 	{
-		list = list->next;
 		len++;
+		list = list->next;
 	}
 	return (len);
 }
