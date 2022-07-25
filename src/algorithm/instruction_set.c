@@ -6,7 +6,7 @@
 /*   By: scristia <scristia@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/27 18:03:14 by scristia      #+#    #+#                 */
-/*   Updated: 2022/07/25 21:09:57 by scristia      ########   odam.nl         */
+/*   Updated: 2022/07/25 21:17:08 by scristia      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	print_instructions(int op_code)
 	[PA] = "pa", [PB] = "pb"};
 	if (!previous_op)
 		previous_op = op_code;
+	else if (op_code == END)
+		ft_printf("%s\n", table[previous_op]);
 	else if (previous_op - op_code == 2 || previous_op - op_code == -2)
 	{
 		ft_printf("%s\n", table[previous_op + op_code]);
 		previous_op = 0;
 	}
-	else if (op_code == END)
-		ft_printf("%s\n", table[previous_op]);
 	else
 	{
 		ft_printf("%s\n", table[previous_op]);
